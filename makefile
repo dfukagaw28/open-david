@@ -28,7 +28,7 @@ endif
 ifneq (,$(findstring cbc,$(solver)))
 	OPTS += -DUSE_CBC
 	IDFLAGS += -I$(CBC_HOME)/include
-	LDFLAGS += -L$(CBC_HOME)/lib -lOsi -lCoinUtils -lOsiClp -lCbc
+	LDFLAGS += -L$(CBC_HOME)/lib -lOsi -lCoinUtils -lOsiClp -lClp -lCbc
 endif
 
 # USE SCIP
