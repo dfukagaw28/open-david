@@ -43,16 +43,16 @@ condition_t is(const std::string &ts)
     };
 }
 
-condition_t lower = [=](char ch) { return (ch >= 'a') and (ch <= 'z'); };
-condition_t upper = [=](char ch) { return (ch >= 'A') and (ch <= 'Z'); };
+condition_t lower = [](char ch) { return (ch >= 'a') and (ch <= 'z'); };
+condition_t upper = [](char ch) { return (ch >= 'A') and (ch <= 'Z'); };
 condition_t alpha = lower | upper;
-condition_t digit = [=](char ch) { return (ch >= '0') and (ch <= '9'); };
+condition_t digit = [](char ch) { return (ch >= '0') and (ch <= '9'); };
 condition_t space = is(" \t\n\r");
 condition_t quotation_mark = is("\'\"");
 condition_t bracket = is("(){}[]<>");
 condition_t newline = is('\n');
 condition_t ascii = alpha | digit | is("_+-*.");
-condition_t bad = [=](char ch) { return (ch == -1) or (ch == 0); };
+condition_t bad = [](char ch) { return (ch == -1) or (ch == 0); };
 condition_t general = not (bad | space | bracket | quotation_mark | is("#^!|=:"));
 
 formatter_t operator&(const formatter_t &f1, const formatter_t &f2)
